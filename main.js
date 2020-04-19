@@ -25,12 +25,13 @@ const ddlGenerator = require('./ddl-generator')
 
 function getGenOptions () {
   return {
-    fileExtension: app.preferences.get('ddl.gen.fileExtension'),
-    quoteIdentifiers: app.preferences.get('ddl.gen.quoteIdentifiers'),
-    dropTable: app.preferences.get('ddl.gen.dropTable'),
-    dbms: app.preferences.get('ddl.gen.dbms'),
-    useTab: app.preferences.get('ddl.gen.useTab'),
-    indentSpaces: app.preferences.get('ddl.gen.indentSpaces')
+    fileExtension: app.preferences.get('exddl.gen.fileExtension'),
+    quoteIdentifiers: app.preferences.get('exddl.gen.quoteIdentifiers'),
+    dropTable: app.preferences.get('exddl.gen.dropTable'),
+    comment: app.preferences.get('exddl.gen.comment'),
+    dbms: app.preferences.get('exddl.gen.dbms'),
+    useTab: app.preferences.get('exddl.gen.useTab'),
+    indentSpaces: app.preferences.get('exddl.gen.indentSpaces')
   }
 }
 
@@ -79,12 +80,13 @@ function _handleGenerate (base, path, options) {
 * Popup PreferenceDialog with DDL Preference Schema
 */
 function _handleConfigure () {
-  app.commands.execute('application:preferences', 'ddl')
+  app.commands.execute('application:preferences', 'exddl')
 }
 
 function init () {
-  app.commands.register('ddl:generate', _handleGenerate)
-  app.commands.register('ddl:configure', _handleConfigure)
+  console.log("EXDDL Loading")
+  app.commands.register('exddl:generate', _handleGenerate)
+  app.commands.register('exddl:configure', _handleConfigure)
 }
 
 exports.init = init

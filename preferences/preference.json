@@ -1,34 +1,40 @@
 {
-  "id": "ddl",
-  "name": "DDL",
+  "id": "exddl",
+  "name": "exDDL",
   "schema": {
-    "ddl.gen": {
-      "text": "DDL Generation",
+    "exddl.gen": {
+      "text": "EXDDL Generation",
       "type": "section"
     },
-    "ddl.gen.fileExtension": {
-      "text": "DDL File Extension",
-      "description": "DDL File Extension",
+    "exddl.gen.fileExtension": {
+      "text": "EXDDL File Extension",
+      "description": "EXDDL File Extension",
       "type": "dropdown",
       "options": [
         { "value": ".sql", "text": ".sql" },
-        { "value": ".ddl", "text": ".ddl" }
+        { "value": ".exddl", "text": ".exddl" }
       ],
       "default": ".sql"
     },
-    "ddl.gen.quoteIdentifiers": {
+    "exddl.gen.quoteIdentifiers": {
       "text": "Quote Identifiers",
       "description": "Quote identifiers",
       "type": "check",
       "default": true
     },
-    "ddl.gen.dropTable": {
+    "exddl.gen.dropTable": {
       "text": "Drop Tables",
       "description": "Drop tables before create",
       "type": "check",
       "default": true
     },
-    "ddl.gen.dbms": {
+    "exddl.gen.comment": {
+      "text": "Comment",
+      "description": "Comment for documentation from table and column description",
+      "type": "check",
+      "default": true
+    },
+    "exddl.gen.dbms": {
       "text": "DBMS",
       "description": "Select a DBMS where generated DDL to be executed",
       "type": "dropdown",
@@ -38,13 +44,13 @@
       ],
       "default": "mysql"
     },
-    "ddl.gen.useTab": {
+    "exddl.gen.useTab": {
       "text": "Use Tab",
       "description": "Use Tab for indentation instead of spaces.",
       "type": "check",
       "default": false
     },
-    "ddl.gen.indentSpaces": {
+    "exddl.gen.indentSpaces": {
       "text": "Indent Spaces",
       "description": "Number of spaces for indentation.",
       "type": "number",
