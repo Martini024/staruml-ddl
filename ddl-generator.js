@@ -103,6 +103,18 @@ class DDLGenerator {
   }
 
   /**
+   * 
+   * @param {String} comment 
+   * @param {Object} options 
+   */
+  getComment (comment, options) {
+    if (options.comment && comment !== "") {
+      return ' COMMENT=\"' + comment + '\"'
+    }
+    return ''
+  }
+
+  /**
    * Return DDL column string
    * @param {type.ERDColumn} elem
    * @param {Object} options
@@ -119,8 +131,10 @@ class DDLGenerator {
     if (elem.primaryKey || !elem.nullable) {
       line += ' NOT NULL'
     }
+    line += self.getComment(elem.documentation, options)    
     return line
   }
+  // 
 
   /**
    * Write Foreign Keys
@@ -229,7 +243,11 @@ class DDLGenerator {
     }
 
     codeWriter.outdent()
-    codeWriter.writeLine(');')
+    if (elem.documentation !== "") {
+      codeWriter.writeLine(')' + ' COMMENT=\"' + elem.documentation + '\";')
+    } else {
+      codeWriter.writeLine(');')
+    }
     codeWriter.writeLine()
   }
 
@@ -246,7 +264,6 @@ class DDLGenerator {
     // DataModel
     if (elem instanceof type.ERDDataModel) {
       codeWriter = new codegen.CodeWriter(this.getIndentString(options))
-
       // Drop Tables
       if (options.dropTable) {
         if (options.dbms === 'mysql') {

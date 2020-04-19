@@ -84,7 +84,6 @@ function _handleConfigure () {
 }
 
 function init () {
-  console.log("EXDDL Loading")
   app.commands.register('exddl:generate', _handleGenerate)
   app.commands.register('exddl:configure', _handleConfigure)
 }
