@@ -109,6 +109,7 @@ class DDLGenerator {
    */
   getComment (comment, options) {
     if (options.comment && comment !== "") {
+      comment = comment.replace(/'/g, "\\'");
       return ' COMMENT \'' + comment + '\''
     }
     return ''
@@ -244,7 +245,8 @@ class DDLGenerator {
 
     codeWriter.outdent()
     if (elem.documentation !== "") {
-      codeWriter.writeLine(')' + ' COMMENT \'' + elem.documentation + '\';')
+      var comment = elem.documentation.replace(/'/g, "\\'");
+      codeWriter.writeLine(')' + ' COMMENT \'' + comment + '\';')
     } else {
       codeWriter.writeLine(');')
     }
