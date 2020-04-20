@@ -109,7 +109,7 @@ class DDLGenerator {
    */
   getComment (comment, options) {
     if (options.comment && comment !== "") {
-      return ' COMMENT=\"' + comment + '\"'
+      return ' COMMENT \'' + comment + '\''
     }
     return ''
   }
@@ -244,7 +244,7 @@ class DDLGenerator {
 
     codeWriter.outdent()
     if (elem.documentation !== "") {
-      codeWriter.writeLine(')' + ' COMMENT=\"' + elem.documentation + '\";')
+      codeWriter.writeLine(')' + ' COMMENT \'' + elem.documentation + '\';')
     } else {
       codeWriter.writeLine(');')
     }
